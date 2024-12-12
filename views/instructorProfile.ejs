@@ -1,0 +1,110 @@
+<!--
+    Author: Aaron Selgestad & Monty McCoy
+    Purpose: show's instructor their nam and info
+    Description: instructor's information
+    Date: 10/10/24 - 12/8/24
+-->
+<!--
+    Redirects:
+        1. viewReport: "viewReport.html", a page that is printable to show all scheduled exams
+        2. Login Page: "index.html", if the user logs out, redirect to the login page-
+-->
+
+<%- include("partials/header.ejs") %>     
+    <body style="body {overflow: auto;}">
+        <div class="grid-container">
+            <!-- Profile Card -->
+            <div class="profile-card">
+                <div class="profileIMGcontainer">
+                    <img class="profileIMG" id="instructorIMG" src="/images/instructor.PNG" alt="Dr. Karen Coombs">
+                </div>
+                <h2 class="instructor-name">Dr. Karen Coombs</h2>
+                <p class="instructor-title">Instructor</p>
+                <div class="button-group">
+                    <button class="message-btn">Message</button>
+                    <form action="/logout2" method="GET" style="display: inline;">
+                        <input type="submit" value="Logout" id="logout" class="logout-btn">
+                    </form>
+                </div>
+            </div>
+
+            <!-- Personal Information Card -->
+            <div id="ProfileBoxINT">
+                <div class="card-header">
+                    <h3>Personal Information</h3>
+                    <button class="edit-btn">Edit</button>
+                </div>
+                <div class="info-content">
+                    <div class="info-group">
+                        <label>Full Name</label>
+                        <div class="simplebox">
+                            <p>Dr. Karen Coombs</p>
+                        </div>
+                    </div>
+                    <div class="info-group">
+                        <label>Email</label>
+                        <div class="simplebox">
+                            <p>karen.coombs@csn.edu</p>
+                        </div>
+                    </div>
+                    <div class="info-group">
+                        <label>Department</label>
+                        <div class="simplebox">
+                            <p>Computer Information and Technology</p>
+                        </div>
+                    </div>
+                    <div class="info-group">
+                        <label>Username</label>
+                        <div class="simplebox">
+                            <p>Karen.Coombs</p>
+                        </div>
+                    </div>
+                    <div class="info-group">
+                        <label>Password</label>
+                        <div class="simplebox">
+                            <p id="instructorPassword">***********</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Links Card -->
+            <div id="quick-links">
+                <h3>Quick Links</h3>
+                <div class="links-list">
+                    <a href="https://csn.edu/faculty-staff" class="quick-link">Faculty Staff</a>
+                    <a href="https://outlook.office.com/mail/" class="quick-link">CSN Email Portal</a>
+                    <a href="https://www.csn.edu/calendar" class="quick-link">Schedule/Catalog</a>
+                    <a href="https://csn.instructure.com/" class="quick-link">Canvas</a>
+                </div>
+            </div>
+
+            <!-- Exam Status Card -->
+            <div id="exam-status">
+                <div class="status-header">
+                    <h3>Exam Status</h3>
+                    <form action="/viewReport" method="GET">
+                        <input type="submit" value="View Report" role="button" class="reportButton" id="viewReportButton"></input>
+                    </form>
+                </div>
+                <div class="status-content">
+                    <div class="status-group">
+                        <h4>Current Exams</h4>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%"></div>
+                        </div>
+                        <p>15 Students Registered</p>
+                    </div>
+                    <div class="status-group">
+                        <h4>Upcoming Exams</h4>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 25%"></div>
+                        </div>
+                        <p>5 Students Registered</p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <hr id="bottomLine">
+    </body>
+<%- include("partials/footer.ejs") %>

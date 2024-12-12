@@ -1,0 +1,68 @@
+<%- include("partials/header.ejs") %>
+
+<body>
+    <div class="main-wrapper">
+
+        <div class="container">
+            <div id="loginBox">
+
+                <h4 class="instructions">
+                New Users:
+                </h4>
+                <br>
+
+                <form action="/register" method="GET" class="new-user-section">
+                    <input type="submit" value="Create Account" class="createButton">
+                </form>
+
+                <br>
+                <hr class="cardBreak"/>
+                <br>
+
+                <form action="/login" method="POST" class="login-section">
+                    <div class="form-group">
+                        <label for="userNameField"><b>Username</b></label>
+                        <input 
+                            type="text" 
+                            class="name" 
+                            name="logUserName" 
+                            placeholder="John4569" 
+                            id="userNameField" 
+                            maxlength="20" 
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passwordField"><b>Password</b></label>
+                        <input 
+                            type="password" 
+                            class="password" 
+                            name="logPassword" 
+                            placeholder="5001234569" 
+                            id="passwordField" 
+                            maxlength="20" 
+                            required
+                        >
+                    </div>
+
+                    <input type="checkbox" class="check-box"><span> Remember Password </span>
+
+                    <% if (locals.loginErrorMessage && loginErrorMessage.length > 0) { %>
+                        <div class="error-message">
+                            <%= loginErrorMessage %>
+                        </div>
+                    <% } %>
+
+                    <br>
+                    <input 
+                        type="submit" 
+                        value="Login" 
+                        class="createButton" 
+                        id="Login"
+                    >
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

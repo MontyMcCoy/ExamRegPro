@@ -1,0 +1,84 @@
+<%- include("partials/header.ejs") %>
+
+<body>
+    <div class="page-container">
+        <main class="content-wrap">
+            <div class="container">
+                <div id="registerBox">
+                    <h4 class="instructions">
+                        <span><%= registrationMessage %></span>
+                    </h4>
+
+                    <br>
+                    <hr class="cardBreak"/>
+                    <br>
+
+                    <form action="/check" method="POST">
+                        <div class="form-group">
+                            <label for="firstNameField"><b>First Name</b></label>
+                            <input 
+                                type="text" 
+                                class="name" 
+                                name="registeringUserName" 
+                                placeholder="John" 
+                                id="firstNameField" 
+                                maxlength="16" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="firstEmailField"><b>Email</b></label>
+                            <input 
+                                type="text" 
+                                class="name" 
+                                name="registeringEmail" 
+                                placeholder="5001234569@student.csn.edu" 
+                                id="firstEmailField" 
+                                maxlength="26" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registeringPassword"><b>NSHE#</b></label>
+                            <input 
+                                type="text" 
+                                class="password" 
+                                name="registeringPassword" 
+                                placeholder="5001234569" 
+                                id="registeringPassword" 
+                                maxlength="10" 
+                                required
+                            >
+                        </div>
+
+                        <br>
+                        <input 
+                            type="submit" 
+                            value="Register Account" 
+                            class="createButton" 
+                            id="registerAccountButton"
+                        >
+                    </form>
+
+                    <br>
+                    <hr class="cardBreak"/>
+                    <br>
+
+                    <form action="/returnToLogin" method="GET">
+                        <input 
+                            type="submit" 
+                            value="or Login" 
+                            class="createButton"
+                        >
+                    </form>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <%- include("partials/footer.ejs") %>
+        </footer>
+    </div>
+</body>

@@ -1,0 +1,66 @@
+<!---->
+<!--Aaron Selgestad 10/10/24-->
+<!--View Student History-->
+<!--Brief: the student can see their history of all current, past, and cancelled exams-->
+<!--Purpose: the student should be able to view all exams they have currently or once were scheduled-->
+<!---->
+<!--Redirects:-->
+<!--    1. Student Profile: studentProfile.ejs, this should simply return them to their profile as there is not much here
+-->
+<%- include("partials/header.ejs") %>
+<body id="exambackground">
+    <div class="topbar">
+        <form action="/exitStudentHistory" method="GET">
+            <input type="submit" value="Return to Profile" id="cancel">
+        </form>
+    </div>
+
+    <div class="history-container">
+        <!-- Scheduled Exams Section -->
+        <div class="exam-section">
+            <h3>Scheduled Exams</h3>
+            <% if (locals.studentScheduledExams && locals.studentScheduledExams[0] != null) { %>
+                <ul class="exam-list">
+                    <% for (var i = 0; i < studentScheduledExams.length; i++) { %>
+                        <li class="exam-item">
+                            <span class="exam-campus"><%= studentScheduledExams[i].campus %></span>
+                            <span class="exam-type"><%= studentScheduledExams[i].examtype %></span>
+                            <span class="exam-date"><%= studentScheduledExams[i].examdate.toISOString().slice(0, 10).replace('T', ' ') %></span>
+                            <span class="exam-time"><%= studentScheduledExams[i].examtime %></span>
+                        </li>
+                    <% } %>
+                </ul>
+            <% } else { %>
+                <div class="no-exams-message">
+                    <%= noScheduledExamsMessage %>
+                </div>
+            <% } %>
+        </div>
+
+        <!-- Past Exams Section -->
+        <div class="exam-section">
+            <h3>Past Exams</h3>
+            <% if (locals.studentExamHistory && locals.studentExamHistory[0] != null) { %>
+                <ul class="exam-list">
+                    <% for (var i = 0; i < studentExamHistory.length; i++) { %>
+                        <li class="exam-item">
+                            <span class="exam-campus"><%= studentExamHistory[i].campus %></span>
+                            <span class="exam-type"><%= studentExamHistory[i].examtype %></span>
+                            <span class="exam-date"><%= studentExamHistory[i].examdate.toISOString().slice(0, 10).replace('T', ' ') %></span>
+                            <span class="exam-time"><%= studentExamHistory[i].examtime %></span>
+                        </li>
+                    <% } %>
+                </ul>
+            <% } else { %>
+                <div class="no-exams-message">
+                    <%= noPastExamsMessage %>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <footer>
+        <hr class="line"/>
+    </footer>
+</body>
+<%- include("partials/footer.ejs") %>

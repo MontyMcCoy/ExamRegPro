@@ -1,0 +1,137 @@
+<!--Page Contributers: Monty McCoy and Aaron Selgestad-->
+
+<%- include("partials/header.ejs") %>     
+<body style="body {overflow: auto;}">
+    <div class="grid-container">
+        <!-- Profile Card -->
+        <div class="profile-card">
+            <div class="profileIMGcontainer">
+                <img class="profileIMG" src="/images/avatar-icon.png" alt="Profile Picture">
+            </div>
+
+            <!-- Basic Profile Info -->
+            <p class="cardTextHeader"><b>Profile</b></p>
+    
+            <!-- Add Logout Button Here -->
+            <div class="button-group" style="margin-top: 20px;">
+                <form action="/logout" method="GET" style="display: inline;">
+                    <input type="submit" value="Logout" id="logout" class="logout-btn">
+                </form>
+            </div>
+    
+            <br>
+            <hr class="cardBreak"/>
+            <br>
+
+            <p><b>Username</b></p>
+            <div class="simplebox">
+                <p id="studentUserName"><%= studentUserName %></p>
+            </div>
+
+            <p><b>NSHE#</b></p>
+            <div class="simplebox">
+                <p id="studentNumber"><%= studentNumber %></p>
+            </div>
+
+            <p><b>Email</b></p>
+            <div class="simplebox">
+                <p><%= studentNumber %>@student.csn.edu</p>
+            </div>
+        </div>
+
+        <!-- Personal Information Card -->
+        <div id="ProfileBoxINT">
+            <div class="card-header">
+                <h3>Personal Information</h3>
+                <!--<button class="edit-btn">Edit</button>-->
+            </div>
+    
+            <div class="info-content">
+                <!-- Non-editable Information -->
+                <div class="info-group">
+                    <label>Username</label>
+                    <div class="simplebox non-editable">
+                        <p id="studentUserName"><%= studentUserName %></p>
+                    </div>
+                </div>
+    
+                <div class="info-group">
+                    <label>NSHE#</label>
+                    <div class="simplebox non-editable">
+                        <p id="studentNumber"><%= studentNumber %></p>
+                    </div>
+                </div>
+    
+                <div class="info-group">
+                    <label>Email</label>
+                    <div class="simplebox non-editable">
+                        <p><%= studentNumber %>@student.csn.edu</p>
+                    </div>
+                </div>
+    
+                <!-- Editable Information -->
+                <div class="info-group">
+                    <label>Phone Number</label>
+                    <div class="simplebox editable">
+                        <p>Add phone number</p>
+                    </div>
+                </div>
+    
+                <div class="info-group">
+                    <label>Major</label>
+                    <div class="simplebox editable">
+                        <p>Computer Science</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Links Card -->
+        <div id="quick-links">
+            <h3>Quick Links</h3>
+            <div class="links-list">
+                <a href="https://www.csn.edu/mycsn" class="quick-link">MyCSN</a>
+                <a href="https://csn.instructure.com/" class="quick-link">Canvas</a>
+                <a href="https://www.csn.edu/calendar" class="quick-link">Academic Calendar</a>
+                <a href="https://www.csn.edu/financial-aid" class="quick-link">Financial Aid</a>
+            </div>
+        </div>
+
+        <!-- Exam Management Card-->
+        <div id="exam-status">
+            <div class="status-header">
+                <h3>Exam Management</h3>
+            </div>
+            <div class="exam-content">
+                <div class="exam-group">
+                    <p class="examText" id="topText"><b><%=examLabelTOP%></b></p>
+                    <form action="/scheduleTOP" method="GET">
+                        <input type="submit" value="<%=buttonMsgTOP%>" class="exambuttons" id="topExam">
+                    </form>
+                </div>
+    
+                <div class="exam-group">
+                    <p class="examText" id="middleText"><b><%=examLabelMIDDLE%></b></p>
+                    <form action="/scheduleMIDDLE" method="GET">
+                        <input type="submit" value="<%=buttonMsgMIDDLE%>" class="exambuttons" id="middleExam">
+                    </form>
+                </div>
+    
+                <div class="exam-group">
+                    <p class="examText" id="bottomText"><b><%=examLabelBOTTOM%></b></p>
+                    <form action="/scheduleBOTTOM" method="GET">
+                        <input type="submit" value="<%=buttonMsgBOTTOM%>" class="exambuttons" id="bottomExam">
+                    </form>
+                </div>
+    
+                <div class="history-section">
+                    <form action="/viewStudentHistory" method="GET">
+                        <button type="submit" id="historyButton" class="view-history-btn">View History</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr id="bottomLine">
+</body>
+<%- include("partials/footer.ejs") %>

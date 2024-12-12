@@ -1,0 +1,106 @@
+<!--
+    Authors: Aaron Selgestad & Monty McCoy
+    Date: 12/8/2024
+    Purpose:
+        - Allow students to schedule new exams
+        - Provide a form-based interface for exam scheduling
+        - Enable selection of campus, exam type, date, and time
+    Description:
+        This page provides a scheduling interface where students can:
+        - Select their preferred campus location
+        - Choose an exam type from available certifications
+        - Pick a date for their exam
+        - Select a time slot
+        - View any scheduling errors or confirmations
+    Redirects:
+        - /returnToProfile: Returns to student profile page on cancel
+        - /confirmRoute: Processes the exam scheduling form
+        - /logout: Redirects to login page when user logs out
+        - Error handling redirects back to this page with error messages
+-->
+
+<%- include("partials/header.ejs") %>
+<body id="exambackground">
+    <div class="topbar">
+        <form action="/returnToProfile" method="GET">
+            <input type="submit" value="Return to Profile" id="cancel">
+        </form>
+    </div>
+
+    <div id="container">
+        <div id="examCampusBox">
+            <h2 class="form-title">Schedule New Exam</h2>
+            <p class="error-message"><%= scheduleExamErrorMessage %></p>
+
+            <form action="/confirmRoute" method="POST" class="schedule-form">
+                <!-- Campus Selection -->
+                <div class="form-group">
+                    <label for="campusSelect">Campus Location</label>
+                    <select id="campusSelect" name="campus" class="form-select" required>
+                        <option value="" disabled selected>Select Campus</option>
+                        <option value="Charleston A#100">West Charleston</option>
+                        <option value="Henderson B#200">Henderson</option>
+                        <option value="N.Las Vegas C#300">North Las Vegas</option>
+                    </select>
+                </div>
+    
+                <!-- Exam Selection -->
+                <div class="form-group">
+                    <label for="examSelect">Exam Type</label>
+                    <select id="examSelect" name="sub" class="form-select" required>
+                        <option value="" disabled selected>Select Exam</option>
+                        <option value="Comptia A+ Certification">CompTIA A+ Certification</option>
+                        <option value="Cisco Certified Network Associate (CCNA)">Cisco Certified Network Associate (CCNA)</option>
+                        <option value="AWS Certified Cloud Practitioner">AWS Certified Cloud Practitioner</option>
+                    </select>
+                </div>
+    
+                <!-- Date Selection -->
+                <div class="form-group">
+                    <label for="datePicker">Date</label>
+                    <input 
+                    type="date"
+                    id="datePicker" 
+                    name="datePicker" 
+                    class="form-select"
+                    min=""
+                    required>
+                </div>
+    
+                <!-- Time Selection -->
+                <div class="form-group">
+                    <label for="time">Time</label>
+                    <select name="time" id="time" class="form-select" required>
+                        <option value="" disabled selected>Select Time</option>
+                        <option value="9">9:00 am</option>
+                        <option value="10">10:00 am</option>
+                        <option value="11">11:00 am</option>
+                        <option value="12">12:00 pm</option>
+                        <option value="1">1:00 pm</option>
+                        <option value="2">2:00 pm</option>
+                        <option value="3">3:00 pm</option>
+                        <option value="4">4:00 pm</option>
+                        <option value="5">5:00 pm</option>
+                    </select>
+                </div>
+    
+                <button type="submit" class="confirm-btn">Confirm</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Added a Script that will disable past dates -->
+    <script>
+        // Get today's date in YYYY-MM-DD format
+        const today = new Date().toISOString().split('T')[0];
+        
+        // Set the minimum date to today
+        document.getElementById('datePicker').setAttribute('min', today);
+        
+        // Optional: Set a maximum date (e.g., 3 months from today)
+        const maxDate = new Date();
+        maxDate.setMonth(maxDate.getMonth() + 3);
+        document.getElementById('datePicker').setAttribute('max', maxDate.toISOString().split('T')[0]);
+    </script>
+
+</body>

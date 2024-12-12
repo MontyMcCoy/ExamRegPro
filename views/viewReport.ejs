@@ -1,0 +1,124 @@
+<!--
+Author: Monty McCoy & Aaron
+Description: Exam Report viewed by instructors
+Purpose: Instructors are able to view and filter class report by campus, subject, & date
+Date: 12/8/2024
+-->
+
+
+<!--THIS IS A DIRECT RIP FROM scheduleNewExam.ejs NO STYLING IS INTENTIONAL-->
+<!--feel free to style in any way... as long as the inputs are encapsulated by the <form></form> it should function correctly-->
+<!--Pleas be advised, value is what determines the captured input, so changing that will change what data is processed-->
+<%- include("partials/header.ejs") %>
+<body class="DarkBlue">
+    <div class="return-section">
+      <form action="/returnToInstructorProfile" method="GET">
+          <input type="submit" value="Return to Profile" id="logout">
+      </form>
+    </div>
+    <div class="report-container">
+      <div class="filter-section">
+          <h2 class="section-title">Exam Report Generator</h2>
+
+            <form action="/campusReport" method="POST">
+                <div class="filter-grid">
+                    <div class="select-wrapper">
+                        <label for="campusSelect">Campus Location</label>
+                        <select id="campusSelect" name="campusReport" class="custom-select" required>
+                            <option value="" disabled selected>Select Campus</option>
+                            <option value="Charleston A#100">West Charleston</option>
+                            <option value="Henderson B#200">Henderson</option>
+                            <option value="N.Las Vegas C#300">North Las Vegas</option>
+                        </select>
+                    </div>
+
+                    <div class="select-wrapper">
+                        <label for="examSelect">Exam Type</label>
+                        <select id="examSelect" name="subReport" class="custom-select" required>
+                            <option value="" disabled selected>Select Exam</option>
+                            <option value="Comptia A+ Certification">CompTIA A+ Certification</option>
+                            <option value="Cisco Certified Network Associate (CCNA)">CCNA</option>
+                            <option value="AWS Certified Cloud Practitioner">AWS Cloud Practitioner</option>
+                        </select>
+                    </div>
+
+                    <div class="select-wrapper">
+                        <label for="datePicker">Exam Date</label>
+                        <input type="date" id="datePicker" name="datePickerReport" class="date-picker" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="generate-report">Generate Report</button>
+            </form>
+        </div>
+
+        <div class="results-section">
+            <h3 class="section-title">Exam Results</h3>
+            <% if (locals.report && locals.report[0] != null) { %>
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Campus</th>
+                            <th>Exam Type</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% for (var i = 0; i < report.length; i++) { %>
+                            <tr>
+                                <td><%= report[i].studentnshe %></td>
+                                <td><%= report[i].campus %></td>
+                                <td><%= report[i].examtype %></td>
+                                <td><%= report[i].examdate.toISOString().slice(0, 10).replace('T', ' ') %></td>
+                                <td><%= report[i].examtime %></td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <p class="no-results"><%= reportMessage %></p>
+            <% } %>
+        </div>
+    </div>
+</body>
+<%- include("partials/footer.ejs") %>
+<!--END INPUT BLOCK-->
+
+
+
+<!--RENDER REPORT BLOCK-->
+<!--
+
+    BE VERY CAREFUL TOUCHING BELOW
+    IF YOU WANT STYLING YOU WILL PROBABLY NEED TO EDIT THE HTML ELEMENTS OUTSIDE THE CODE
+    <hr>
+    <div class="report-results">
+        <h3 class="report-title"> Upcoming Exams </h3>
+
+          <% if (locals.report[0] != null) {%>
+            <ul>
+              <%for (var i = 0; i < report.length; i++) { %>
+                <li>
+                  <%= report[i].studentnshe %>
+                  <%= report[i].campus %>
+                  <%= report[i].examtype %>
+                  <%= report[i].examdate.toISOString().slice(0, 10).replace('T', ' ') %>
+                  <%= report[i].examtime %>
+                </li>
+              <%}%>
+            </ul>
+          <% } else { %>
+            <%= reportMessage %>
+            <% } %>
+      </div>
+    <hr>
+    </body>
+<%- include("partials/footer.ejs") %>
+
+-->
+<!--END REPORT BLOCK-->

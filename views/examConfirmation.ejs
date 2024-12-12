@@ -1,0 +1,97 @@
+<!--
+    Author: Monty McCoy & Aaron Selgestad
+    Date: 12/8/2024
+    
+    Description:
+        -Exam confirmation page for users.
+    
+    Purpose:
+        - Display exam details for student confirmation (NSHE#, Exam_ID, Location, Seats Available, Time, and Date)
+        - Allow students to review and confirm their exam details
+    
+    Redirects:
+        - /return: Returns to previous page
+        - /confirmTheExam: Processes the exam confirmation
+        - Header/Footer includes handle additional navigation
+-->
+
+<%- include("partials/header.ejs") %>
+<body class="confirmation-page">
+    <!-- Top Navigation Bar -->
+    <div class="topbar">
+        <form action="/return" method="GET">
+            <input type="submit" value="Return to Profile" id="return">
+        </form>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="confirmation-container">
+        <div class="confirmation-card">
+            <!-- Card Header -->
+            <div class="card-header">
+                <h3>Confirm Your Exam Details</h3>
+            </div>
+
+            <!-- Exam Information Display -->
+            <div class="confirmation-content">
+    
+                <!-- Student Information -->
+                <div class="info-group">
+                    <label>Student Name</label>
+                    <div class="info-box" id="studentName">
+                        <p><%= studentNameConfirmation %></p>
+                    </div>
+                </div>
+
+                <!-- Student ID -->
+                <div class="info-group">
+                    <label>NSHE#</label>
+                    <div class="info-box" id="studentNumber">
+                        <p><%= studentNumberConfirmation %></p>
+                    </div>
+                </div>
+
+                <!-- Exam Details -->
+                <div class="info-group">
+                    <label>Exam</label>
+                    <div class="info-box">
+                        <p><%= examTypeConfirmation %></p>
+                    </div>
+                </div>
+
+                <!-- Location Information -->
+                <div class="info-group">
+                    <label>Location</label>
+                    <div class="info-box">
+                        <p><%= examCampusConfirmation %></p>
+                    </div>
+                </div>
+
+                <!-- Time and Date -->
+                <div class="info-group">
+                    <label>Time and Date</label>
+                    <div class="info-box">
+                        <p><%= dateTimeConfirmation %></p>
+                    </div>
+                </div>
+
+                <!-- Seat Availability -->
+                <div class="info-group">
+                    <label>Available Seats</label>
+                    <div class="info-box seats-info">
+                        <p><%= remainingSeats %></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confirmation Button Section -->
+            <div class="confirmation-actions">
+                <form action="/confirmTheExam" method="GET">
+                    <button type="submit" class="confirm-btn">
+                        Confirm Exam
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
