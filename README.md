@@ -4,10 +4,11 @@
   As a project for college, we assembled a group that was tasked to make an exam registration website for the CIT department for CSN. This system allows students to register for certification exams and enables faculty to manage these registrations efficiently.
   Team Members
   
- - Aaron
- - Matt
+ - Aaron Lambou-selgestad
+ - Matthew Proctor
  - Monty McCoy
- - Riley
+ - Riley Walsh
+ 
 
 ## Overview
 The Exam Registration System (ERS) is a web application designed for CSN students and faculty to manage exam registrations. The system provides a streamlined interface for students to schedule certification exams and for faculty to monitor registrations.
