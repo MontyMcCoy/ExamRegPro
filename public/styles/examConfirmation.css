@@ -1,0 +1,187 @@
+/* 
+    Author: Monty McCoy & Aaron Selgestad
+    Date: 12/8/2024
+    Description: Modern style sheet for exam confirmation
+
+    Purpose: 
+    - Provide modern, clean styling for exam confirmation page
+    - Maintain school branding and color scheme
+    - Ensure responsive design and accessibility
+*/
+
+/* School Color Variables 
+    primary-blue: #004890;
+    primary-yellow: #FFD200;
+    light-yellow: #F9F1E2;
+    white: #ffffff;
+    gray-1: #f8f9fa;
+    gray-2: #e0e0e0;
+    gray-3: #333333;
+*/
+
+/* Base Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Page Background */
+body.confirmation-page {
+    background-color: var(--light-yellow);
+    min-height: 100vh;
+    padding-bottom: 40px;
+}
+
+/* Top Navigation Bar */
+.topbar {
+    background-color: var(--white);
+    padding: 15px 20px;
+    box-shadow: 0 2px 8px rgba(0, 72, 144, 0.1);
+    margin-bottom: 30px;
+}
+
+/* Return Button Styling */
+#return {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#return:hover {
+    background-color: var(--primary-yellow);
+    color: var(--primary-blue);
+    transform: translateY(-2px);
+}
+
+/* Main Container Layout */
+.confirmation-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Confirmation Card Styling */
+.confirmation-card {
+    background-color: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 72, 144, 0.1);
+    overflow: hidden;
+}
+
+/* Card Header Design */
+.card-header {
+    background: linear-gradient(to right, var(--primary-blue), #006090);
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+}
+
+.card-header h3 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* Information Content Styling */
+.confirmation-content {
+    padding: 30px;
+}
+
+/* Information Group Layout */
+.info-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.info-group:last-child {
+    margin-bottom: 0;
+}
+
+/* Label Styling */
+.info-group label {
+    display: block;
+    color: var(--primary-blue);
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+/* Information Box Design */
+.info-box {
+    background-color: var(--gray-100);
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--gray-200);
+}
+
+.info-box p {
+    margin: 0;
+    color: var(--gray-700);
+}
+
+/* Special Styling for Seats Info */
+.seats-info {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    font-weight: bold;
+}
+
+/* Confirmation Actions Section */
+.confirmation-actions {
+    padding: 20px;
+    background-color: var(--gray-100);
+    border-top: 1px solid var(--gray-200);
+    text-align: center;
+}
+
+/* Confirm Button Styling */
+.confirm-btn {
+    background-color: var(--primary-yellow);
+    color: var(--primary-blue);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+.confirm-btn:hover {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 72, 144, 0.2);
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #000000;
+    padding: 15px 0;
+    color: var(--white);
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .confirmation-container {
+        padding: 0 15px;
+    }
+
+    .confirmation-content {
+        padding: 20px;
+    }
+
+    .confirm-btn {
+        width: 100%;
+    }
+}

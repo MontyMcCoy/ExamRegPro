@@ -1,0 +1,255 @@
+/* 
+    Author: Monty McCoy
+    Description: Updated style sheet for instructorProfile
+    Purpose: Gives style to the instructor's profile.
+    Date: 12/8/2024
+*/
+
+/* School Colors: #004890 (Blue), #FFD200 (Yellow), #F9F1E2 (Light Yellow), #FFF (White)*/
+
+/* Universal Styles and Fonts */
+* {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f2f5;
+    min-width: 600px;
+}
+
+/* Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-rows: auto auto auto;    /* Three rows */
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Common Card Styles */
+.profile-card, #ProfileBoxINT, #quick-links, #exam-status {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Card */
+.profile-card {
+    grid-row: 1;
+    grid-column: 1;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profileIMGcontainer {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #004890;
+    background-color: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profileIMG {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.instructor-name {
+    color: #004890;
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+}
+
+.instructor-title {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Button Styles */
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.message-btn, .logout-btn {
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.message-btn {
+    background-color: #FFD200;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.message-btn:hover {
+    background-color: #c7a200;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.logout-btn {
+    background-color: #004890;
+    color: white;
+}
+
+.logout-btn:hover {
+    background-color: #004890;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Quick Links */
+#quick-links {
+    grid-row: 2;
+    grid-column: 1;
+    width: 100%;
+    height: auto;
+}
+
+.links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quick-link {
+    color: #004890;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.quick-link:hover {
+    background-color: #f0f2f5;
+}
+
+/* Personal Info Card */
+#ProfileBoxINT {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+    width: 100%;
+    height: 100%;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-top: 10px;
+}
+
+.edit-btn {
+    padding: 5px 15px;
+    border-radius: 15px;
+    border: none;
+    background-color: #f0f2f5;
+    color: #004890;
+    cursor: pointer;
+}
+
+.info-group {
+    margin-bottom: 15px;
+    text-align: left;
+    padding: 0 15px;
+}
+
+.info-group label {
+    display: block;
+    color: #000000;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.simplebox {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    color: #727272;
+}
+
+/* Exam Status Card */
+#exam-status {
+    grid-row: 3;
+    grid-column: 1 / span 2;
+    width: 100%;
+    background-color: #fff;
+}
+
+.status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.btn-view-report {
+    background-color: #004890;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.progress-bar {
+    background-color: #949494;
+    height: 8px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.progress {
+    background-color: #004890;
+    height: 100%;
+    border-radius: 4px;
+}
+
+.status-group {
+    margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 15px;
+    }
+
+    .profile-card,
+    #quick-links,
+    #ProfileBoxINT,
+    #exam-status {
+        grid-column: 1;
+        grid-row: auto;
+        width: 100%;
+    }
+}
